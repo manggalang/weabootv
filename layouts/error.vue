@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>404</h1>
+    <h1>Error</h1>
     <NuxtLink to="/">Home page</NuxtLink>
   </div>
 </template>
