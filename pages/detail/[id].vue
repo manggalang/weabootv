@@ -11,7 +11,7 @@ const { data: animeData } = await useAsyncData("anime", () =>
 </script>
 
 <template>
-  <NuxtLayout name="main">
+  <NuxtLayout name="detail">
     <main class="main-content">
       <div class="container-large">
         <h2 class="title">{{ animeData.title }}</h2>
