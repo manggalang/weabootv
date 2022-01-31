@@ -1,5 +1,20 @@
+<script setup lang="ts">
+import AnimeService from "@/services/anime.service";
+const animeService = new AnimeService();
+const route = useRoute();
+
+const { data: animeData } = await useAsyncData("anime", () =>
+  animeService.getDetailAnime(Number(route.params.id))
+);
+</script>
+
 <template>
   <div>
+    <Html>
+      <Head>
+        <Title>{{ animeData?.title ?? "Weabootv" }}</Title>
+      </Head>
+    </Html>
     <Header />
     <slot></slot>
     <Footer />

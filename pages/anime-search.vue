@@ -11,18 +11,14 @@ const { data: animesData } = await useAsyncData(`anime`, () =>
 onBeforeRouteUpdate(async (to) => {
   animesData.value = await animeService.searchAnime(to.query.q);
 });
-
-definePageMeta({
-  layout: "index",
-});
 </script>
 
 <template>
-  <main class="main-content hm">
-    <div class="hm-banner">
+  <NuxtLayout name="main">
+    <main class="main-content">
       <div class="container-large">
-        <h2 class="hm-banner__title">Search by keyword {{ $route.query.q }}</h2>
-        <div class="hm-banner__card-wrapper">
+        <h2>Search by keyword {{ $route.query.q }}</h2>
+        <div class="card-wrapper">
           <CardAnime
             v-for="anime in animesData.data"
             :title="anime.title"
@@ -32,20 +28,18 @@ definePageMeta({
           />
         </div>
       </div>
-    </div>
-  </main>
+    </main>
+  </NuxtLayout>
 </template>
 
 <style lang="scss" scoped>
-.hm-banner {
-  &__card-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 30px;
+.card-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 30px;
 
-    @media screen and(max-width: 375px) {
-      justify-content: center;
-    }
+  @media screen and(max-width: 375px) {
+    justify-content: center;
   }
 }
 </style>
